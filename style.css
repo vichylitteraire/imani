@@ -65,3 +65,79 @@ body {
     h1 { font-size: 20px; }
     body { padding: 0; align-items: flex-start; }
 }
+
+/* Основной фон модалки */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+/* Контейнер с прокруткой */
+.modal-content {
+    background-color: #fdfcf0; /* Цвет бумажного листа */
+    margin: 5vh auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 650px;
+    max-height: 85vh; /* Ограничение по высоте */
+    overflow-y: auto; /* Прокрутка, если текста много */
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    color: #1a1a1a;
+    border: 1px solid #dcdcdc;
+}
+
+/* Стилизация текста в стиле "зин/журнал" */
+.label-tag {
+    background: #00c2cb;
+    color: white;
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 1.1rem;
+    transform: rotate(-1deg);
+    margin-bottom: 15px;
+}
+
+.zine-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.clipping-paper {
+    border-left: 3px solid #00c2cb;
+    padding-left: 15px;
+    font-style: italic;
+}
+
+.sketch-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid #333;
+    text-decoration: none;
+    color: #333;
+    margin-right: 10px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.sketch-btn:hover {
+    background: #333;
+    color: white;
+}
+
+.close-btn {
+    position: sticky; /* Чтобы крестик всегда был виден при прокрутке */
+    float: right;
+    top: 0;
+    font-size: 30px;
+    cursor: pointer;
+    line-height: 20px;
+}
