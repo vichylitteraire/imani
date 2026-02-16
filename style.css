@@ -231,19 +231,71 @@ h1 {
 }
 
 /* --- СТИЛИ ДЛЯ ОКНА КОНТАКТОВ --- */
+/* --- СТИЛИ ДЛЯ ОКНА КОНТАКТОВ (ИСПРАВЛЕНО) --- */
+
 #contactModal .modal-content {
-    background-color: #fffafc !important;
+    background-color: #fffafc !important; 
     padding: 45px;
     border-radius: 40px;
     position: relative;
     box-shadow: 0 25px 60px rgba(212, 132, 132, 0.2);
 }
 
+/* Элемент списка контактов как кнопка */
+#contactModal .contact-item {
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 0 20px 20px 0;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    border: 1px solid transparent;
+}
+
+/* Тот самый эффект при наведении с розовым фоном и неоном */
 #contactModal .contact-item:hover {
     transform: translateX(8px);
-    background: var(--mint); /* Подсветка fce4e4 */
+    background: var(--mint); /* Твой розовый fce4e4 */
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(212, 132, 132, 0.2);
 }
 
 #contactModal .contact-info strong {
+    display: block;
+    color: var(--accent); /* Ягодный */
+    font-size: 1.1rem;
+}
+
+#contactModal .contact-info span {
+    color: var(--text);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+#contactModal .icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    filter: drop-shadow(0 0 5px rgba(212, 132, 132, 0.3)); /* Неон для иконок */
+}
+
+/* Крестик в контактах */
+#contactModal .close-modal {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    color: var(--coral);
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 0.8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#contactModal .close-modal:hover {
     color: var(--accent);
+    text-shadow: 0 0 10px var(--accent);
+    transform: scale(1.2);
 }
