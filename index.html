@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vichy Littéraire</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <img src="./logomain.jpg" class="nav-logo" alt="Logo Vichy Littéraire">
+            <nav>
+                <a href="mailto:vichylitteraire@gmail.com" class="btn-nav">Nous contacter</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="concept" class="hero-section">
+            <div class="hero-content">
+                <h1>Vichy Littéraire</h1>
+                    Nous métamorphosons chaque établissement en une bibliothèque vivante, 
+                    invitant vos clients à un voyage unique au fil des pages via nos solutions numériques.
+                </p>
+                <div class="action-buttons">
+                    <a href="https://vichylitteraire.github.io/vl/" target="_blank">
+                        <button class="btn-primary">Découvrir le projet</button></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="statistiques" class="data-section">
+            <div class="section-title">
+                <h2>L'engagement en chiffres</h2>
+                <p class="stat-subtitle">Analyse de l'utilisation des QR codes dans nos établissements partenaires.</p>
+            </div>
+
+            <div class="data-card">
+                <div class="coffee-selector">
+                    <button class="tab-btn active" data-shop="starbucks">Colada</button>
+                    <button class="tab-btn" data-shop="skuratov">Patchouli</button>
+                </div>
+
+                <div class="chart-box">
+                    <canvas id="mainChart"></canvas>
+                </div>
+            </div>
+        </section>
+ -->
+        <section class="info-section">
+            <div class="card-grid">
+                <div class="info-card">
+                    <h3>Pourquoi nous rejoindre ?</h3>
+                    <p>Valorisez votre établissement en offrant une expérience culturelle gratuite et innovante à votre clientèle.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Notre Mission</h3>
+                    <p>Promouvoir la littérature locale et classique à travers des formats numériques accessibles à tous, partout.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-simple">
+        <p>© 2026 Association Vichy Littéraire — Tous droits réservés.</p>
+        <p><small>Vichy, France</small></p>
+    </footer>
+
+    <div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Nous contacter</h2>
+        
+        <div class="contact-links">
+            <a href="https://instagram.com/votre_compte" target="_blank" class="contact-item">
+                <span class="icon">📸</span>
+                <div class="contact-info">
+                    <strong>Instagram</strong>
+                    <span>@vichylitteraire</span>
+                </div>
+            </a>
+            
+            <a href="mailto:vichylitteraire@gmail.com" class="contact-item">
+                <span class="icon">✉️</span>
+                <div class="contact-info">
+                    <strong>Email</strong>
+                    <span>vichylitteraire@gmail.com</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="projectModal" class="modal">
+    <div class="modal-content journal-style">
+        <span class="close-modal">&times;</span>
+        
+        <main class="journal-container">
+            <section class="zine-section">
+                <h2 class="label-tag">C'est quoi VICHY LITTÉRAIRE?</h2>
+                <p class="typewriter-text">C'est une plateforme numérique intégrée à l'espace des cafés urbains. Nous transformons les simples QR codes présents sur les tables en portails vers l'univers de la prose locale contemporaine. Au lieu du bruit numérique habituel des réseaux sociaux, le client accède à un contenu littéraire exclusif.</p>
+            </section>
+        
+            <section class="zine-section">
+                <h2 class="label-tag">Comment ça marche ?</h2>
+                <div class="clipping-paper">
+                    <p><strong>• Le Scan :</strong> pendant que sa commande se prépare, le client scanne le QR code sur la table.</p>
+                    <p><strong>• La Lecture :</strong> une histoire courte s'ouvre directement sur son smartphone, conçue pour être lue en quelques minutes.</p>
+                </div>
+            </section>
+        
+            <section class="zine-section">
+                <h2 class="label-tag">Avantages</h2>
+                <div class="clipping-paper">
+                    <ul class="list-minimal">
+                        <li> <strong>Cafés :</strong> renforcer la fidélité des clients et créer une atmosphère « intellectuelle » qui distingue l'établissement de ses concurrents.</li>
+                        <li><strong>Auteurs :</strong> un accès direct au public et une nouvelle plateforme de publication où leurs mots rencontrent le lecteur au moment idéal.</li>
+                        <li> <strong>Lecteurs :</strong> l'opportunité de découvrir son nouvel auteur préféré, tout en venant simplement boire un espresso..</li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr class="soft-divider">
+
+            <div class="modal-footer-contacts">
+                <p><strong>Rejoignez-nous :</strong></p>
+                <div class="mini-contact-btns">
+                    <a href="https://instagram.com/vichylitteraire" target="_blank" class="sketch-btn">Instagram</a>
+                    <a href="mailto:vichylitteraire@gmail.com" class="sketch-btn">Mail</a>
+                    <a href="https://vichylitteraire.github.io/vichylitteraire/" class="sketch-btn">Découvrir notre site</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
