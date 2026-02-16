@@ -75,10 +75,6 @@ body {
     box-shadow: 0 20px 40px rgba(212, 132, 132, 0.08);
 }
 .footer-simple {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
     text-align: center;
 }
 h1 {
