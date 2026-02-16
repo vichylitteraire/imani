@@ -1,14 +1,12 @@
-/* --- ОБНОВЛЕННЫЕ ПЕРЕМЕННЫЕ (Розовая гамма + Неон) --- */
+/* --- ОСНОВНЫЕ ПЕРЕМЕННЫЕ --- */
 :root {
-    --accent: #d48484;      /* Приглушенный ягодный (вместо бирюзового) */
-    --bg-soft: #fce4e4;    /* Твой основной цвет фона */
-    --neon-pink: #ffbaba;   /* Цвет для неонового свечения */
-    --coral: #ffb3a7;      
-    --text: #4a3b3b;       /* Теплый темный текст для мягкости */
-    --glass: rgba(255, 255, 255, 0.82); 
-    
-    /* Неоновое свечение */
-    --neon-shadow: 0 0 15px rgba(212, 132, 132, 0.4), 0 0 5px rgba(212, 132, 132, 0.2);
+    --accent: #d48484;      /* Ягодный (вместо бирюзового) */
+    --mint: #fce4e4;        /* Твой розовый фон (вместо мятного) */
+    --coral: #ffb3a7;       /* Коралловый акцент */
+    --text: #4a3b3b;        /* Теплый серый текст */
+    --glass: rgba(255, 255, 255, 0.88); 
+    /* Эффект неона */
+    --neon: 0 0 12px rgba(212, 132, 132, 0.3);
 }
 
 * { box-sizing: border-box; }
@@ -18,8 +16,7 @@ body {
     padding: 0;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: var(--text);
-    /* Заменяем фон на твой розовый с легким градиентом */
-    background: linear-gradient(rgba(252, 228, 228, 0.8), rgba(252, 228, 228, 0.8)), url('./IMG_1715.JPG');
+    background: linear-gradient(rgba(252, 228, 228, 0.7), rgba(252, 228, 228, 0.7)), url('./IMG_1715.JPG');
     background-size: cover;
     background-attachment: fixed;
     line-height: 1.6;
@@ -27,13 +24,26 @@ body {
 
 /* --- ШАПКА --- */
 .main-header {
-    background: rgba(252, 228, 228, 0.85); /* Под цвет фона */
-    backdrop-filter: blur(12px);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
     padding: 15px 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(212, 132, 132, 0.15); /* Розовое свечение шапки */
+    box-shadow: 0 4px 20px rgba(212, 132, 132, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    width: 150px;
+    transition: transform 0.3s;
 }
 
 .btn-nav {
@@ -44,13 +54,13 @@ body {
     padding: 8px 20px;
     border-radius: 25px;
     transition: all 0.3s;
-    box-shadow: var(--neon-shadow); /* Мягкий неон */
+    box-shadow: var(--neon); /* Легкий неон */
 }
 
 .btn-nav:hover {
     background: var(--accent);
     color: white;
-    box-shadow: 0 0 20px rgba(212, 132, 132, 0.6);
+    box-shadow: 0 0 15px rgba(212, 132, 132, 0.5);
 }
 
 /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
@@ -61,22 +71,34 @@ body {
     background: var(--glass);
     backdrop-filter: blur(15px);
     border-radius: 40px;
-    border: 1px solid rgba(255,255,255,0.5);
-    box-shadow: 0 20px 40px rgba(212, 132, 132, 0.1); 
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 20px 40px rgba(212, 132, 132, 0.08);
     text-align: center;
 }
 
 h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    /* Градиент от темного к ягодному */
     background: linear-gradient(45deg, var(--text), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -1.5px;
 }
 
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
 /* --- КНОПКИ ДЕЙСТВИЯ --- */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 .btn-primary {
     background: var(--accent);
     color: white;
@@ -86,15 +108,50 @@ h1 {
     font-weight: 700;
     font-size: 1.1rem;
     cursor: pointer;
-    /* Акцентный неон для главной кнопки */
-    box-shadow: 0 8px 20px rgba(212, 132, 132, 0.4);
+    box-shadow: 0 10px 20px rgba(212, 132, 132, 0.2), var(--neon); /* Неон */
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(212, 132, 132, 0.6);
+    box-shadow: 0 15px 25px rgba(212, 132, 132, 0.4);
 }
+
+.btn-secondary {
+    background: white;
+    color: var(--text);
+    padding: 16px 35px;
+    border-radius: 35px;
+    border: 1px solid #eee;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+/* --- КАРТОЧКИ ИНФО --- */
+.info-section {
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.info-card {
+    background: var(--glass);
+    padding: 40px;
+    border-radius: 35px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.03);
+}
+
+.info-card h3 { color: var(--accent); font-size: 1.5rem; margin-top: 0; }
 
 /* --- МОДАЛЬНЫЕ ОКНА --- */
 .modal {
@@ -103,62 +160,90 @@ h1 {
     z-index: 9999;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    /* Фон подложки в тон */
-    background: rgba(74, 59, 59, 0.4); 
+    background: rgba(74, 59, 59, 0.4); /* Темный теплый фон */
     backdrop-filter: blur(8px);
     overflow-y: auto;
 }
 
-#projectModal .modal-content, 
-#contactModal .modal-content {
-    background-color: #fffafc !important; /* Очень светлый розово-белый */
+#projectModal .modal-content {
+    background-color: #fffafc !important; /* Очень светло-розовый */
     padding: 45px;
     border-radius: 40px;
     border: 1px solid rgba(212, 132, 132, 0.1);
-    box-shadow: 0 25px 60px rgba(212, 132, 132, 0.2);
 }
 
-/* Крестик */
-.close-modal {
+#projectModal .close-modal {
+    position: absolute;
+    right: 25px;
+    top: 20px;
     color: var(--coral);
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 0.8;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.close-modal:hover {
+#projectModal .close-modal:hover {
     color: var(--accent);
-    text-shadow: 0 0 10px var(--neon-pink); /* Неоновый эффект текста */
+    text-shadow: 0 0 8px var(--accent); /* Неоновый крестик */
+    transform: scale(1.2);
 }
 
-/* Желтая полоска (оставляем золотой, она шикарно смотрится с розовым) */
-.clipping-paper {
+#projectModal .clipping-paper {
     border-left: 6px solid #FFD700 !important;
     background: #ffffff;
-    box-shadow: 4px 4px 15px rgba(212, 132, 132, 0.05);
+    padding: 20px 25px;
+    border-radius: 0 20px 20px 0;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
-/* Теги */
-#projectModal .label-tag {
-    background: var(--bg-soft); /* Твой fce4e4 */
-    color: var(--accent);
-    box-shadow: var(--neon-shadow);
-}
-
-/* Кнопки в модалке */
 #projectModal .sketch-btn {
-    border: 2px solid var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 22px;
+    background: #ffffff;
     color: var(--accent);
-    background: transparent;
-    box-shadow: var(--neon-shadow);
+    border: 2px solid var(--accent);
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: var(--neon);
 }
 
 #projectModal .sketch-btn:hover {
     background: var(--accent);
     color: #ffffff;
-    box-shadow: 0 0 20px rgba(212, 132, 132, 0.5);
+    box-shadow: 0 0 15px rgba(212, 132, 132, 0.4);
 }
 
-/* Элементы контактов */
+#projectModal .label-tag {
+    background: var(--mint); /* Твой fce4e4 */
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: var(--neon);
+}
+
+/* --- СТИЛИ ДЛЯ ОКНА КОНТАКТОВ --- */
+#contactModal .modal-content {
+    background-color: #fffafc !important;
+    padding: 45px;
+    border-radius: 40px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(212, 132, 132, 0.2);
+}
+
 #contactModal .contact-item:hover {
-    background: var(--bg-soft); /* Подсветка при наведении цветом fce4e4 */
-    box-shadow: inset 0 0 10px rgba(212, 132, 132, 0.1);
+    transform: translateX(8px);
+    background: var(--mint); /* Подсветка fce4e4 */
+}
+
+#contactModal .contact-info strong {
+    color: var(--accent);
 }
