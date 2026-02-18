@@ -64,3 +64,53 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+// Логика для окна "Rejoindre le projet"
+const partnerModal = document.getElementById('partnerModal');
+const openPartnerBtn = document.getElementById('openPartnerModal');
+const closePartnerBtn = document.getElementById('closePartner');
+const partnerForm = document.getElementById('partner-form');
+
+// Открытие окна
+openPartnerBtn.onclick = () => {
+    partnerModal.style.display = 'block';
+};
+
+// Закрытие на крестик
+closePartnerBtn.onclick = () => {
+    partnerModal.style.display = 'none';
+};
+
+// Закрытие при клике мимо окна
+window.addEventListener('click', (event) => {
+    if (event.target == partnerModal) {
+        partnerModal.style.display = 'none';
+    }
+});
+
+// Отправка данных в Supabase
+partnerForm.onsubmit = async (e) => {
+    e.preventDefault();
+    
+    const applicationData = {
+        name: document.getElementById('p-name').value,
+        establishment: document.getElementById('p-estab').value,
+        contact: document.getElementById('p-contact').value,
+        stickers_count: parseInt(document.getElementById('p-stickers').value),
+        comment: document.getElementById('p-comment').value
+    };
+
+    const { error } = await _supabase
+        .from('applications')
+        .insert([applicationData]);
+
+    if (!error) {
+        alert("Merci ! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
+        partnerModal.style.display = "none";
+        partnerForm.reset();
+    } else {
+        alert("Ошибка. Проверьте подключение.");
+        console.error(error);
+    }
+};
