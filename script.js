@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .insert([applicationData]);
 
             if (!error) {
-                alert("Merci ! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
+                alert("Merci ! Votre demande a été bien reçue. Nous vous contacterons très prochainement.");
                 closeAll();
                 partnerForm.reset();
             } else {
