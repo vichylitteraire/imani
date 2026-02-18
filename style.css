@@ -300,3 +300,75 @@ h1 {
     text-shadow: 0 0 10px var(--accent);
     transform: scale(1.2);
 }
+
+/* Поля ввода в стиле France Littéraire */
+.custom-input {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Настройка ширины модального окна для формы */
+#partnerModal .modal-content {
+    max-width: 450px;
+    margin: 10% auto;
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (SMARTPHONES) --- */
+@media (max-width: 600px) {
+    /* 1. Главный заголовок делаем чуть меньше, чтобы не разбивался на буквы */
+    h1 {
+        font-size: 2.5rem !important;
+        padding: 0 10px;
+    }
+
+    /* 2. Отступы главного блока делаем меньше, чтобы текст не был узким */
+    .hero-section {
+        margin: 40px 15px;
+        padding: 30px 20px;
+        border-radius: 30px;
+    }
+
+    /* 3. Кнопки ставим одну под другой (так удобнее нажимать пальцем) */
+    .action-buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%; /* Кнопки на всю ширину экрана */
+        padding: 14px;
+    }
+
+    /* 4. Настройка модального окна (формы) */
+    #partnerModal .modal-content {
+        width: 95%; /* Почти на весь экран */
+        margin: 10% auto;
+        padding: 25px 15px;
+        border-radius: 25px;
+    }
+
+    /* 5. Увеличиваем поля ввода, чтобы по ним было легко попасть пальцем */
+    .custom-input {
+        font-size: 16px; /* Это ВАЖНО: при 16px iPhone не будет зумить экран при вводе */
+        padding: 14px;
+    }
+
+    /* 6. Исправляем отображение карточек (Mission/Pourquoi) */
+    .card-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+}
