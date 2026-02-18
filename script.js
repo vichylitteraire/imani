@@ -9,11 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // 1. Получаем элементы модалок
     const contactModal = document.getElementById("contactModal");
     const projectModal = document.getElementById("projectModal");
+    const partnerModal = document.getElementById('partnerModal'); // Добавили форму
     
     // 2. Получаем кнопки открытия
     const btnContactNav = document.querySelector(".btn-nav");        // "Nous contacter" в шапке
-    const btnAccueillir = document.querySelector(".btn-secondary"); // "Accueillir le projet"
     const btnDecouvrir = document.querySelector(".btn-primary");   // "Découvrir le projet"
+    const btnOpenPartner = document.getElementById('openPartnerModal'); // Кнопка формы
     
     // 3. Получаем ВСЕ крестики закрытия
     const closeBtns = document.querySelectorAll(".close-modal");
@@ -24,41 +25,53 @@ document.addEventListener('DOMContentLoaded', function () {
     function openContacts(e) {
         e.preventDefault();
         contactModal.style.display = "block";
-        document.body.style.overflow = "hidden"; // Блокируем скролл сайта
+        document.body.style.overflow = "hidden"; 
     }
 
     // Открыть описание проекта
     function openProject(e) {
         e.preventDefault();
         projectModal.style.display = "block";
-        document.body.style.overflow = "hidden"; // Блокируем скролл сайта
+        document.body.style.overflow = "hidden"; 
+    }
+
+    // Открыть форму партнера
+    function openPartner(e) {
+        if(e) e.preventDefault();
+        partnerModal.style.display = "block";
+        document.body.style.overflow = "hidden";
     }
 
     // Закрыть всё
     function closeAll() {
         contactModal.style.display = "none";
         projectModal.style.display = "none";
-        document.body.style.overflow = "auto"; // Возвращаем скролл
+        if (partnerModal) partnerModal.style.display = "none";
+        document.body.style.overflow = "auto"; 
     }
 
     // --- СЛУШАТЕЛИ СОБЫТИЙ ---
 
-    // Назначаем открытие на кнопки
+    // Назначаем открытие на кнопки (строго по назначению)
     if (btnContactNav) btnContactNav.addEventListener('click', openContacts);
-    if (btnAccueillir) btnAccueillir.addEventListener('click', openContacts);
     if (btnDecouvrir)  btnDecouvrir.addEventListener('click', openProject);
+    if (btnOpenPartner) btnOpenPartner.addEventListener('click', openPartner);
 
     // Назначаем закрытие на ВСЕ крестики
     closeBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Чтобы клик не ушел на фон
+            e.stopPropagation(); 
             closeAll();
         });
     });
 
-    // Закрытие кликом по темному фону (вне белого окна)
+    // Специальный слушатель для крестика формы (если у него другой ID)
+    const closePartnerBtn = document.getElementById('closePartner');
+    if (closePartnerBtn) closePartnerBtn.onclick = closeAll;
+
+    // Закрытие кликом по темному фону
     window.addEventListener('click', function(e) {
-        if (e.target === contactModal || e.target === projectModal) {
+        if (e.target === contactModal || e.target === projectModal || e.target === partnerModal) {
             closeAll();
         }
     });
@@ -69,54 +82,33 @@ document.addEventListener('DOMContentLoaded', function () {
             closeAll();
         }
     });
-});
 
+    // --- ОТПРАВКА ФОРМЫ В SUPABASE ---
+    const partnerForm = document.getElementById('partner-form');
+    if (partnerForm) {
+        partnerForm.onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const applicationData = {
+                name: document.getElementById('p-name').value,
+                establishment: document.getElementById('p-estab').value,
+                contact: document.getElementById('p-contact').value,
+                stickers_count: parseInt(document.getElementById('p-stickers').value),
+                comment: document.getElementById('p-comment').value
+            };
 
-// Логика для окна "Rejoindre le projet"
-const partnerModal = document.getElementById('partnerModal');
-const openPartnerBtn = document.getElementById('openPartnerModal');
-const closePartnerBtn = document.getElementById('closePartner');
-const partnerForm = document.getElementById('partner-form');
+            const { error } = await _supabase
+                .from('applications')
+                .insert([applicationData]);
 
-// Открытие окна
-openPartnerBtn.onclick = () => {
-    partnerModal.style.display = 'block';
-};
-
-// Закрытие на крестик
-closePartnerBtn.onclick = () => {
-    partnerModal.style.display = 'none';
-};
-
-// Закрытие при клике мимо окна
-window.addEventListener('click', (event) => {
-    if (event.target == partnerModal) {
-        partnerModal.style.display = 'none';
+            if (!error) {
+                alert("Merci ! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
+                closeAll();
+                partnerForm.reset();
+            } else {
+                alert("Ошибка. Проверьте подключение.");
+                console.error(error);
+            }
+        };
     }
 });
-
-// Отправка данных в Supabase
-partnerForm.onsubmit = async (e) => {
-    e.preventDefault();
-    
-    const applicationData = {
-        name: document.getElementById('p-name').value,
-        establishment: document.getElementById('p-estab').value,
-        contact: document.getElementById('p-contact').value,
-        stickers_count: parseInt(document.getElementById('p-stickers').value),
-        comment: document.getElementById('p-comment').value
-    };
-
-    const { error } = await _supabase
-        .from('applications')
-        .insert([applicationData]);
-
-    if (!error) {
-        alert("Merci ! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
-        partnerModal.style.display = "none";
-        partnerForm.reset();
-    } else {
-        alert("Ошибка. Проверьте подключение.");
-        console.error(error);
-    }
-};
