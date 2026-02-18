@@ -28,6 +28,7 @@
                 <div class="action-buttons">
                     <a href="https://vichylitteraire.github.io/vl/" target="_blank">
                         <button class="btn-primary">Découvrir le projet</button></a>
+                    <button id="openPartnerModal" class="btn-secondary">Accueillir le projet</button>
                 </div>
             </div>
         </section>
@@ -108,6 +109,25 @@
         </main>
     </div>
 </div>
+
+    <div id="partnerModal" class="modal">
+    <div class="modal-content journal-style">
+        <span class="close-modal" id="closePartner">&times;</span>
+        
+        <p class="typewriter-text">Vous souhaitez offrir une expérience littéraire à vos clients ? Laissez-nous vos coordonnées.</p>
+        
+        <form id="partner-form" class="clipping-paper" style="margin-top: 20px;">
+            <input type="text" id="p-name" placeholder="Nom et Prénom" required class="custom-input">
+            <input type="text" id="p-estab" placeholder="Nom de l'établissement (Café, Hôtel...)" required class="custom-input">
+            <input type="email" id="p-contact" placeholder="Votre Email" required class="custom-input">
+            <input type="number" id="p-stickers" placeholder="Nombre de stickers souhaité" required class="custom-input">
+            <textarea id="p-comment" placeholder="Message ou question (optionnel)" class="custom-input" rows="3"></textarea>
+            
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 15px;">Envoyer la demande</button>
+        </form>
+    </div>
+</div>
+    
     <script src="script.js"></script>
 </body>
 </html>
