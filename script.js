@@ -1,3 +1,9 @@
+// Копируй аккуратно вместе с https://
+const supabaseUrl = 'https://gbpntxkkxabndhtpdaai.supabase.co'; 
+const supabaseKey = 'sb_publishable_AcsuGHJH7zZd1EEcCPmN4w_m65x6omh'; 
+
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
 document.addEventListener('DOMContentLoaded', function () {
     
     // 1. Получаем элементы модалок
