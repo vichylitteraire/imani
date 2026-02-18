@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const applicationData = {
                 name: document.getElementById('p-name').value,
                 establishment: document.getElementById('p-estab').value,
-                adresse: document..getElementById('p-adresse').value,
+                adresse: document.getElementById('p-adresse').value,
                 contact: document.getElementById('p-contact').value,
                 stickers_count: parseInt(document.getElementById('p-stickers').value),
                 comment: document.getElementById('p-comment').value
